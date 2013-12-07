@@ -1,4 +1,5 @@
-#module-wrapper
+#module-wrapper [![Build Status](https://travis-ci.org/supersheep/module-wrapper.png?branch=master)](https://travis-ci.org/supersheep/module-wrapper)
+
 
 wrap a commonjs module to module-wrapping/module-transport style
 
