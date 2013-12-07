@@ -1,0 +1,17 @@
+{
+  "name": "module-wrapper",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "chai": "~1.8.1",
+    "uglifyjs": "~2.3.6",
+    "fs-sync": "~0.2.4",
+    "string": "~1.7.0"
+  }
+}
