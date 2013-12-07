@@ -10,9 +10,8 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "chai": "~1.8.1",
-    "uglifyjs": "~2.3.6",
     "fs-sync": "~0.2.4",
-    "string": "~1.7.0",
-    "mocha": "~1.15.1"
+    "mocha": "~1.15.1",
+    "uglify-js": "~2.4.6"
   }
 }
