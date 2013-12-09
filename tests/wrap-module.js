@@ -15,11 +15,15 @@ chai.should();
 describe('test wrap-module', function(){
     function runAssert(opt){
         var fixture = node_path.join("tests","fixtures",opt.fixture);
-        var expected = node_path.join("tests","expect",opt.expect);
+        var expected = null;
         it(opt.desc,function(done){
             wrapper.wrap( fixture, opt.options, function(err, result){
-                expect(result.deps).to.deep.equal(opt.deps);
-                expect(result.output).to.equal(fs.read(expected,"utf8"));
+                opt.err && expect(err).to.equal(opt.err);
+                if(result){
+                    expected = node_path.join("tests","expect",opt.expect);
+                    expect(result.output).to.equal(fs.read(expected,"utf8"));
+                    expect(result.deps).to.deep.equal(opt.deps);
+                }
 
                 opt.assert && opt.assert.apply(this,arguments);
                 done();
@@ -82,5 +86,17 @@ describe('test wrap-module', function(){
             }
         }
     },
-    ].forEach(runAssert);
+    {
+        desc:'custom renderer throws error',
+        fixture:"raw.js",
+        deps:["a","b"],
+        err:"I'm an Error",
+        options:{
+            id:"raw",
+            render:function(opts){
+                throw "I'm an Error";
+                return output;
+            }
+        }
+    }].forEach(runAssert);
 });

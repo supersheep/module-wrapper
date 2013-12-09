@@ -29,14 +29,18 @@ exports.wrap = function(file,options,callback){
         if(err){return callback(err);}
         var deps = data.deps;
         var code = data.code;
+        var output = null;
 
-        
-        var output = (options.render || defaultRender)(
-            lang.mix({
-                deps:deps,
-                code:code
-            },options)
-        );
+        try{
+            output = (options.render || defaultRender)(
+                lang.mix({
+                    deps:deps,
+                    code:code
+                },options)
+            );
+        }catch(e){
+            return callback(e);
+        }
 
         callback(null, {
             output: output,
