@@ -1,5 +1,6 @@
 var depParser   = require("./lib/dep-parser");
 var lang        = require('./lib/lang');
+var path        = require("path");
 
 function defaultRender(options){
     var deps = options.deps;
@@ -35,6 +36,7 @@ exports.wrap = function(file,options,callback){
             output = (options.render || defaultRender)(
                 lang.mix({
                     deps:deps,
+                    file:path.resolve(file),
                     code:code
                 },options)
             );
