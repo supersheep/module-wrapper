@@ -29,6 +29,14 @@ describe('test wrap-module', function(){
         }
     },
     {
+        desc:'should throw syntax error when parsing file wrong use of require with argument not a string',
+        file:"require-with-argument-not-a-string.js",
+        assert:function(err,deps){
+            expect(err).to.be.an.instanceof(SyntaxError);
+            err.message.indexOf("`require` should have one and only one string as an argument.").should.not.equal(-1);
+        }
+    },
+    {
         desc:'should throw syntax error when parsing file wrong use of require',
         file:"require-with-multi-arg.js",
         assert:function(err,deps){
